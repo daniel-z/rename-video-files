@@ -17,8 +17,13 @@ class VideoFileScanner
     return allDirectories;
   end
 
-  def getVideosInDirectory ( folder )
-    
+  def getVideosInDirectory ( directory )
+    firstDirectory = Dir.pwd;
+    Dir.chdir( directory );
+    allVideosOnDirectory = [];
+    Dir.glob("MOV0*[0-9A-F].MOD").each do |entry|
+      allVideosOnDirectory.push( entry );
+    end
   end
 
   def mapAllFilesParentInFolder ()

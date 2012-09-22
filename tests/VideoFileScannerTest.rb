@@ -4,14 +4,13 @@ require "app/VideoFileScanner"
 class VideoFileScannerTest < Test::Unit::TestCase
 
   def setup
-    @rootDirectory        = Dir.pwd;
-    @testDirectory        = @rootDirectory        + "/tests/";
-    @testSamplesDirectory = @testDirectory        + "testSamples/";
-    @videoParentFolder    = @testSamplesDirectory + "sample1/";
-    @videoSubFolder1      = @videoParentFolder    + "1";
-    @videoSubFolder2      = @videoParentFolder    + "2";
-    @videoFileScannerObj  = VideoFileScanner.new;
-    puts @rootDirectory;
+    @rootDirectory         = Dir.pwd;
+    @testDirectory         = @rootDirectory        + "/tests/";
+    @testSamplesDirectory  = @testDirectory        + "testSamples/";
+    @videoSampleFolder1    = @testSamplesDirectory + "sample1/";
+    @videoSampleSubFolder1 = @videoSampleFolder1    + "1/";
+    @videoSampleSubFolder2 = @videoSampleFolder1    + "2/";
+    @videoFileScannerObj   = VideoFileScanner.new;
     super
   end
 
@@ -22,16 +21,16 @@ class VideoFileScannerTest < Test::Unit::TestCase
 
   def test_getVideoSubDirectories
       expected = [ "1" , "2" ];
-      assert_equal expected , @videoFileScannerObj.getVideoSubDirectories(@videoParentFolder)
+      assert_equal expected , @videoFileScannerObj.getVideoSubDirectories(@videoSampleFolder1)
   end
-#  def test_getVideosInDirectory
-#      expected = [
-#        "MOD001.MOD" , "MOD002.MOD" , "MOD003.MOD" , "MOD004.MOD" , "MOD005.MOD" ,
-#        "MOD006.MOD" , "MOD007.MOD" , "MOD008.MOD" , "MOD009.MOD" , "MOD00A.MOD" , 
-#        "MOD00B.MOD" , "MOD00C.MOD" , "MOD00D.MOD" , "MOD00E.MOD" , "MOD00F.MOD" , 
-#        "MOD010.MOD" , "MOD011.MOD" , "MOD012.MOD"
-#      ];
-#      assert_equal expected , @videoFileScannerObj.getVideosInDirectory(@videoParentFolder)
-#  end
+  def test_getVideosInDirectory
+      expected = [
+        "MOV001.MOD" , "MOV002.MOD" , "MOV003.MOD" , "MOV004.MOD" , "MOV005.MOD" ,
+        "MOV006.MOD" , "MOV007.MOD" , "MOV008.MOD" , "MOV009.MOD" , "MOV00A.MOD" , 
+        "MOV00B.MOD" , "MOV00C.MOD" , "MOV00D.MOD" , "MOV00E.MOD" , "MOV00F.MOD" , 
+        "MOV010.MOD" , "MOV011.MOD" , "MOV012.MOD"
+      ];
+      assert_equal expected , @videoFileScannerObj.getVideosInDirectory( @videoSampleSubFolder1 )
+  end
 
 end
