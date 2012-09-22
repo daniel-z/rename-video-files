@@ -29,7 +29,7 @@ class VideoFileScanner
   end
 
   def getMapOfVideoFolderAndFiles ( mainDirectory )
-
+    
   end
 
 end

@@ -21,6 +21,12 @@ class VideoFileScannerTest < Test::Unit::TestCase
       "MOV010.MOD" , "MOV011.MOD" , "MOV012.MOD"
     ];
 
+    @expectedSubFolder2 = @expectedSubFolder1;
+
+    @expectedMapOfvideoSampleFolder1 = [ 
+      {'1' => @expectedSubFolder1 } , { '2' => @expectedSubFolder2 }
+    ];
+
     super
   end
 
@@ -37,6 +43,7 @@ class VideoFileScannerTest < Test::Unit::TestCase
   end
 
   def test_getMapOfVideoFolderAndFiles
+      assert_equal @expectedMapOfvideoSampleFolder1 , @videoFileScannerObj.getMapOfVideoFolderAndFiles( @videoSampleFolder1 )
   end
 
 end
