@@ -24,9 +24,12 @@ class VideoFileScanner
     Dir.glob("MOV0*[0-9A-F].MOD").each do |entry|
       allVideosOnDirectory.push( entry );
     end
+    Dir.chdir( firstDirectory );
+    return allVideosOnDirectory;
   end
 
-  def mapAllFilesParentInFolder ()
+  def getMapOfVideoFolderAndFiles ( mainDirectory )
+
   end
 
 end
