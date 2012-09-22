@@ -29,7 +29,13 @@ class VideoFileScanner
   end
 
   def getMapOfVideoFolderAndFiles ( mainDirectory )
-    
+    allSubdirectories = getVideoSubDirectories( mainDirectory );
+    mapOfVideoFolderAndFiles = [];
+
+    allSubdirectories.each do |subdir|
+      mapOfVideoFolderAndFiles.push( { subdir => getVideosInDirectory( mainDirectory+'/'+subdir ) } );
+    end
+    return mapOfVideoFolderAndFiles;
   end
 
 end
