@@ -33,7 +33,7 @@ class VideoNameConversion
   end
 
   def addingNeededZerosToNumber( number )
-    if ( !number ) 
+    if ( !number )
       return;
     end
 
@@ -49,5 +49,7 @@ class VideoNameConversion
     return numberWithZeros;
   end
 
+  def createVideoFileNameFromNumber( number )
+  end
 end
 
