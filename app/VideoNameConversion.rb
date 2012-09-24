@@ -47,7 +47,20 @@ class VideoNameConversion
   end
 
   def addingNeededZerosToNumber( number )
-    
+    if ( !number ) 
+      return;
+    end
+
+    neededZeros = '';
+
+    if ( number < 10 )
+      neededZeros = '00';
+    elsif ( number < 100 )
+      neededZeros = '0';
+    end
+
+    numberWithZeros = neededZeros + number.to_s();
+    return numberWithZeros;
   end
 
 end
