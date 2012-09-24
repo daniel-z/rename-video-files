@@ -14,8 +14,7 @@ class VideoNameConversion
 
     ( rangeStart..rangeEnd ).each do |index|
       completeNumberString = addingNeededZerosToNumber( index );
-      videoName = @videoPrefix + completeNumberString.to_s() + @videoSuffix + '.' + @videoExtention;
-      videoNames.push( videoName );
+      videoNames.push( createVideoFileNameFromStringNumber( completeNumberString ) );
     end
 
     return videoNames;
@@ -23,13 +22,11 @@ class VideoNameConversion
 
   def convertHexadecimalNameToDecimal( nameToConvert )
     indexOfNumberOnName = @videoPrefix.length;
-    numberExtractedFromName = nameToConvert[ indexOfNumberOnName , 3 ];
+    numberExtractedFromName = nameToConvert[ indexOfNumberOnName , @lengthOfNumberOnName ];
     numberOnDecimalFormat = numberExtractedFromName.hex();
     numberOnDecimalFormat = addingNeededZerosToNumber( numberOnDecimalFormat );
 
-    finalName = @videoPrefix + numberOnDecimalFormat.to_s() + @videoSuffix + '.' + @videoExtention;
-
-    return finalName;
+    return createVideoFileNameFromStringNumber( numberOnDecimalFormat );
   end
 
   def addingNeededZerosToNumber( number )
@@ -45,8 +42,7 @@ class VideoNameConversion
       neededZeros = '0';
     end
 
-    numberWithZeros = neededZeros + number.to_s();
-    return numberWithZeros;
+    return neededZeros + number.to_s();
   end
 
   def createVideoFileNameFromStringNumber( decimalNumberString )
