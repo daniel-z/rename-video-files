@@ -13,15 +13,8 @@ class VideoNameConversion
     videoNames = [];
 
     ( rangeStart..rangeEnd ).each do |index|
-      zeros = '';
-
-      if ( index < 10 )
-        zeros = '00' 
-      elsif ( index < 100 )
-        zeros = '0' 
-      end
-
-      videoName = @videoPrefix + zeros + index.to_s() + @videoSuffix + '.' + @videoExtention;
+      completeNumberString = addingNeededZerosToNumber( index );
+      videoName = @videoPrefix + completeNumberString.to_s() + @videoSuffix + '.' + @videoExtention;
       videoNames.push( videoName );
     end
 
@@ -30,18 +23,11 @@ class VideoNameConversion
 
   def convertHexadecimalNameToDecimal( nameToConvert )
     indexOfNumberOnName = @videoPrefix.length;
-    numberExtractedFromName = nameToConvert[ indexOfNumberOnName, 3 ];
-    numberOnDecimal = numberExtractedFromName.hex();
-    
-    zeros = '';
+    numberExtractedFromName = nameToConvert[ indexOfNumberOnName , 3 ];
+    numberOnDecimalFormat = numberExtractedFromName.hex();
+    numberOnDecimalFormat = addingNeededZerosToNumber( numberOnDecimalFormat );
 
-    if ( numberOnDecimal < 10 )
-      zeros = '00' 
-    elsif ( numberOnDecimal < 100 )
-      zeros = '0' 
-    end
-
-    finalName = @videoPrefix + zeros + numberOnDecimal.to_s() + @videoSuffix + '.' + @videoExtention;
+    finalName = @videoPrefix + numberOnDecimalFormat.to_s() + @videoSuffix + '.' + @videoExtention;
 
     return finalName;
   end
