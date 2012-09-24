@@ -67,5 +67,9 @@ class VideoNameConversionTest < Test::Unit::TestCase
     end
   end
 
+  def test_createVideoFileNameFromArrayOfStringNumbers
+      assert_equal @expectedVideoNamesDecimal , @videoNameConversionObj.createVideoFileNameFromArrayOfStringNumbers( @decimalNumbersWithZeros );
+  end
+
 end
 

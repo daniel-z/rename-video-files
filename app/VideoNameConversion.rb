@@ -51,5 +51,19 @@ class VideoNameConversion
     end
     return @videoPrefix + decimalNumberString + @videoSuffix + '.' + @videoExtention;
   end
+
+  def createVideoFileNameFromArrayOfStringNumbers( arrayOfStringNumbers )
+    if ( !arrayOfStringNumbers )
+      return;
+    end
+
+    arrayOfVideoNames = [];
+
+    arrayOfStringNumbers.each do |stringNumber|
+      arrayOfVideoNames.push( createVideoFileNameFromStringNumber( stringNumber ) );
+    end
+
+    return arrayOfVideoNames;
+  end
 end
 
