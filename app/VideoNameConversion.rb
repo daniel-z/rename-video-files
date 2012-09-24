@@ -49,7 +49,11 @@ class VideoNameConversion
     return numberWithZeros;
   end
 
-  def createVideoFileNameFromNumber( number )
+  def createVideoFileNameFromStringNumber( decimalNumberString )
+    if ( !decimalNumberString )
+      return;
+    end
+    return @videoPrefix + decimalNumberString + @videoSuffix + '.' + @videoExtention;
   end
 end
 

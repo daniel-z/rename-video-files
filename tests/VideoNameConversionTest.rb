@@ -61,9 +61,9 @@ class VideoNameConversionTest < Test::Unit::TestCase
     end
   end
 
-  def test_createVideoFileNameFromNumber
+  def test_createVideoFileNameFromStringNumber
     @decimalNumbersWithZeros.each_index do |index|
-      assert_equal @expectedVideoNamesDecimal[ index ] , @videoNameConversionObj.createVideoFileNameFromNumber( @decimalNumbersWithZeros[ index ] );
+      assert_equal @expectedVideoNamesDecimal[ index ] , @videoNameConversionObj.createVideoFileNameFromStringNumber( @decimalNumbersWithZeros[ index ] );
     end
   end
 
