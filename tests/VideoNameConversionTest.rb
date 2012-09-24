@@ -38,5 +38,19 @@ class VideoNameConversionTest < Test::Unit::TestCase
         assert_equal @expectedVideoNamesDecimal[index] , @videoNameConversionObj.convertHexadecimalNameToDecimal( @expectedVideoNamesHexadecimal[index] );
       end
   end
+
+  def test_addingNeededZerosToNumber
+    numbers = [ 
+      1 , 2 , 3 , 4 , 5 , 10 , 11 , 12 , 50 , 60 , 70 , 80 , 100 , 500 , 999 , 1000
+    ];
+    expectedNumbers = [ 
+      '001' , '002' , '003' , '004' , '005' , '010' , '011' , '012' , '050' , '060' , '070' , '080',
+      '100','500' , '999' , '1000' 
+    ];
+
+    numbers.each_index do |index|
+      assert_equal expectedNumbers[index] , @videoNameConversionObj.addingNeededZerosToNumber( numbers[index] );
+    end
+  end
 end
 

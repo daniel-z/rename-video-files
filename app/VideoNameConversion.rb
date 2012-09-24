@@ -46,5 +46,9 @@ class VideoNameConversion
     return finalName;
   end
 
+  def addingNeededZerosToNumber( number )
+    
+  end
+
 end
 
