@@ -2,10 +2,14 @@
 
 class VideoNameConversion
 
+  def initialize
+    @videoPrefix          = 'MOV';
+    @videoSuffix          = '';
+    @videoExtention       = 'MOD';
+    @lengthOfNumberOnName = 3;
+  end
+
   def getSerieOfNames ( rangeStart, rangeEnd )
-    @videoPrefix = 'MOV';
-    @videoSuffix = '';
-    @videoExtention = 'MOD';
     videoNames = [];
 
     ( rangeStart..rangeEnd ).each do |index|
@@ -22,6 +26,24 @@ class VideoNameConversion
     end
 
     return videoNames;
+  end
+
+  def convertHexadecimalNameToDecimal( nameToConvert )
+    indexOfNumberOnName = @videoPrefix.length;
+    numberExtractedFromName = nameToConvert[ indexOfNumberOnName, 3 ];
+    numberOnDecimal = numberExtractedFromName.hex();
+    
+    zeros = '';
+
+    if ( numberOnDecimal < 10 )
+      zeros = '00' 
+    elsif ( numberOnDecimal < 100 )
+      zeros = '0' 
+    end
+
+    finalName = @videoPrefix + zeros + numberOnDecimal.to_s() + @videoSuffix + '.' + @videoExtention;
+
+    return finalName;
   end
 
 end
