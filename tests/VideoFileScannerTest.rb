@@ -24,7 +24,14 @@ class VideoFileScannerTest < Test::Unit::TestCase
     @expectedSubFolder2 = @expectedSubFolder1;
 
     @expectedMapOfvideoSampleFolder1 = [ 
-      {'1' => @expectedSubFolder1 } , { '2' => @expectedSubFolder2 }
+      {
+        'folderName'    => '1',
+        'folderContent' => @expectedSubFolder1
+      } , 
+      {
+        'folderName'    => '2',
+        'folderContent' => @expectedSubFolder2
+      }
     ];
 
     super

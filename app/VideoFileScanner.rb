@@ -33,7 +33,7 @@ class VideoFileScanner
     mapOfVideoFolderAndFiles = [];
 
     allSubdirectories.each do |subdir|
-      mapOfVideoFolderAndFiles.push( { subdir => getVideosInDirectory( mainDirectory+'/'+subdir ) } );
+      mapOfVideoFolderAndFiles.push( { 'folderName' => subdir, 'folderContent' => getVideosInDirectory( mainDirectory+'/'+subdir ) } );
     end
     return mapOfVideoFolderAndFiles;
   end
