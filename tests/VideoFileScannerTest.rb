@@ -1,11 +1,11 @@
 require "test/unit"
-require "app/VideoFileScanner"
+require "../app/VideoFileScanner"
 
 class VideoFileScannerTest < Test::Unit::TestCase
 
   def setup
     @rootDirectory         = Dir.pwd;
-    @testDirectory         = @rootDirectory        + "/tests/";
+    @testDirectory         = @rootDirectory        + "/";
     @testSamplesDirectory  = @testDirectory        + "testSamples/";
     @videoSampleFolder1    = @testSamplesDirectory + "sample1/";
     @videoSampleSubFolder1 = @videoSampleFolder1    + "1/";

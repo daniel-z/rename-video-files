@@ -1,5 +1,5 @@
 require "test/unit"
-require "app/VideoNameConversion"
+require "../app/VideoNameConversion"
 
 class VideoNameConversionTest < Test::Unit::TestCase
 
