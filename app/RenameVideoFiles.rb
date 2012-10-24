@@ -48,8 +48,6 @@ def renameAllVideofiles ( path , mapOfFileNames )
             if ( actualName === newName )
                 next
             end
-            # puts basePath + actualName;
-            # puts basePath + newName;
             renameFile( basePath + actualName , basePath + newName );
         end
     end
