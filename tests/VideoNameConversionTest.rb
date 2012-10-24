@@ -43,10 +43,10 @@ class VideoNameConversionTest < Test::Unit::TestCase
   end
 
   def test_getSerieOfNames
-      assert_equal @expectedVideoNamesDecimal[ 0..4 ]   , @videoNameConversionObj.getSerieOfNames( 1 , 5 );
-      assert_equal @expectedVideoNamesDecimal[ 4..9 ]   , @videoNameConversionObj.getSerieOfNames( 5 , 10 );
-      assert_equal @expectedVideoNamesDecimal[ 14..19 ] , @videoNameConversionObj.getSerieOfNames( 15 , 20 );
-      assert_equal @expectedVideoNamesDecimal[ 0..19 ]  , @videoNameConversionObj.getSerieOfNames( 1 , 20 );
+      assert_equal @expectedVideoNamesDecimal[ 0..4 ]   , @videoNameConversionObj.getSerieOfNames( 1 , 5 , 'MOD' );
+      assert_equal @expectedVideoNamesDecimal[ 4..9 ]   , @videoNameConversionObj.getSerieOfNames( 5 , 10 , 'MOD' );
+      assert_equal @expectedVideoNamesDecimal[ 14..19 ] , @videoNameConversionObj.getSerieOfNames( 15 , 20 , 'MOD' );
+      assert_equal @expectedVideoNamesDecimal[ 0..19 ]  , @videoNameConversionObj.getSerieOfNames( 1 , 20 , 'MOD');
   end
 
   def test_convertHexadecimalNameToDecimal
@@ -63,12 +63,12 @@ class VideoNameConversionTest < Test::Unit::TestCase
 
   def test_createVideoFileNameFromStringNumber
     @decimalNumbersWithZeros.each_index do |index|
-      assert_equal @expectedVideoNamesDecimal[ index ] , @videoNameConversionObj.createVideoFileNameFromStringNumber( @decimalNumbersWithZeros[ index ] );
+      assert_equal @expectedVideoNamesDecimal[ index ] , @videoNameConversionObj.createVideoFileNameFromStringNumber( @decimalNumbersWithZeros[ index ] , 'MOD' );
     end
   end
 
   def test_createVideoFileNameFromArrayOfStringNumbers
-      assert_equal @expectedVideoNamesDecimal , @videoNameConversionObj.createVideoFileNameFromArrayOfStringNumbers( @decimalNumbersWithZeros );
+      assert_equal @expectedVideoNamesDecimal , @videoNameConversionObj.createVideoFileNameFromArrayOfStringNumbers( @decimalNumbersWithZeros , 'MOD' );
   end
 
 end

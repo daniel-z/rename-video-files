@@ -9,12 +9,12 @@ class VideoNameConversion
     @lengthOfNumberOnName = 3;
   end
 
-  def getSerieOfNames ( rangeStart, rangeEnd )
+  def getSerieOfNames ( rangeStart, rangeEnd, fileExtention )
     videoNames = [];
 
     ( rangeStart..rangeEnd ).each do |index|
       completeNumberString = addingNeededZerosToNumber( index );
-      videoNames.push( createVideoFileNameFromStringNumber( completeNumberString ) );
+      videoNames.push( createVideoFileNameFromStringNumber( completeNumberString, fileExtention ) );
     end
 
     return videoNames;
@@ -26,7 +26,7 @@ class VideoNameConversion
     numberOnDecimalFormat = numberExtractedFromName.hex();
     numberOnDecimalFormat = addingNeededZerosToNumber( numberOnDecimalFormat );
 
-    return createVideoFileNameFromStringNumber( numberOnDecimalFormat );
+    return createVideoFileNameFromStringNumber( numberOnDecimalFormat, @videoExtention );
   end
 
   def addingNeededZerosToNumber( number )
@@ -45,14 +45,15 @@ class VideoNameConversion
     return neededZeros + number.to_s();
   end
 
-  def createVideoFileNameFromStringNumber( decimalNumberString )
+  def createVideoFileNameFromStringNumber( decimalNumberString , videoFileExtention )
     if ( !decimalNumberString )
       return;
     end
-    return @videoPrefix + decimalNumberString + @videoSuffix + '.' + @videoExtention;
+    videoExtention = videoFileExtention || @videoExtention;
+    return @videoPrefix + decimalNumberString + @videoSuffix + '.' + videoExtention;
   end
 
-  def createVideoFileNameFromArrayOfStringNumbers( arrayOfStringNumbers )
+  def createVideoFileNameFromArrayOfStringNumbers( arrayOfStringNumbers , videoFileExtention )
     if ( !arrayOfStringNumbers )
       return;
     end
@@ -60,7 +61,7 @@ class VideoNameConversion
     arrayOfVideoNames = [];
 
     arrayOfStringNumbers.each do |stringNumber|
-      arrayOfVideoNames.push( createVideoFileNameFromStringNumber( stringNumber ) );
+      arrayOfVideoNames.push( createVideoFileNameFromStringNumber( stringNumber, videoFileExtention ) );
     end
 
     return arrayOfVideoNames;
