@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rename Video Files by daniel-z</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Rename Video Files</h1>
+        <p>Rename Video Files</p>
+
+        <p class="view"><a href="https://github.com/daniel-z/rename-video-files">View the Project on GitHub <small>daniel-z/rename-video-files</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/daniel-z/rename-video-files/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/daniel-z/rename-video-files/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/daniel-z/rename-video-files">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Rename Video Files</h1>
+
+<h1></h1>
+
+<h2>Descripcion</h2>
+
+<p>Este es un projecto útil solo para mi y mis hermanos de la Iglesia Obra de Guadalajara, esta es una utilidad para renombrar grandes cantidades de videos que provienen de nuestras camaras.</p>
+
+<h2>Contexto</h2>
+
+<p>El nombre de los archivos es generado por la camara como MOVXXX.MOD donde XXX es un numero en hexadecimal. el orden se genera de la siguiente manera generando confusion para los usuarios que no conocen el hexadecimal:</p>
+
+<ul>
+<li>MOV001.MOD es el numero 1
+...</li>
+<li>MOV008.MOD es el numero 8</li>
+<li>MOV009.MOD es el numero 9</li>
+<li>MOV00A.MOD es el numero 10</li>
+<li>MOV00B.MOD es el numero 11
+...</li>
+<li>MOV010.MOD es el numero 16,</li>
+<li>MOV011.MOD es el numero 17,
+etc,etc.</li>
+</ul><h2>Prerequisitos</h2>
+
+<p>Es necesario tener instalado Ruby: <a href="http://net.tutsplus.com/tutorials/ruby/how-to-install-ruby-on-a-mac/">http://net.tutsplus.com/tutorials/ruby/how-to-install-ruby-on-a-mac/</a></p>
+
+<h2>Instalacion</h2>
+
+<ul>
+<li>Descarga <a href="https://github.com/daniel-z/rename-video-files/downloads">https://github.com/daniel-z/rename-video-files/downloads</a>
+</li>
+<li>Ejecuta desde la linea de comandos: $ gem install renaming-0.1.0.gem</li>
+</ul><h2>Uso</h2>
+
+<p>Entra a la carpeta que contiene los archivos de video. 
+estructura ejemplo:</p>
+
+<ul>
+<li>2012-10-10-VIDEOS:
+
+<ul>
+<li>Carpeta1:
+
+<ul>
+<li>MOV001.MOD</li>
+<li>MOV002.MOD</li>
+<li>MOV003.MOD</li>
+</ul>
+</li>
+<li>Carpeta2
+
+<ul>
+<li>MOV001.MOD</li>
+<li>MOV002.MOD</li>
+<li>MOV003.MOD</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><p>Ahora ejecuta la utileria:
+    * desde la linea de comandos: $: renaming</p>
+
+<p>La libreria va a leer los directorios en orden: primero "Carpeta1" despues "Carpeta2"m, de igual manera con los archivos; va a renombrarlos y va a mover los archivos a la carpeta padre, con el siguiente resultado:</p>
+
+<ul>
+<li>2012-10-10-VIDEOS:
+
+<ul>
+<li>MOV001.mpg</li>
+<li>MOV002.mpg</li>
+<li>MOV003.mpg</li>
+<li>MOV004.mpg</li>
+<li>MOV005.mpg</li>
+<li>MOV006.mpg</li>
+<li>Carpeta1:
+
+<ul>
+<li>(vacia)</li>
+</ul>
+</li>
+<li>Carpeta2:
+
+<ul>
+<li>(vacia)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><p>Ahora que esta claro como funciona, manos a la obra.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/daniel-z">daniel-z</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
