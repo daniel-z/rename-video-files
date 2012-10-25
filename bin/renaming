@@ -1,10 +1,12 @@
-# Ruby App to rename our video files
+#!/usr/bin/env ruby
+
+# Ruby App to rename our video files at obra de guadalajara
 
 require "VideoFileScanner"
 require "VideoNameConversion"
 require 'fileutils'
 
-@mainDirectory = ARGV[0]+'/' || "./";
+@mainDirectory = ( ARGV[0] || "." ) + '/' ;
 videoFileScannerObj    = VideoFileScanner.new;
 videoNameConversionObj = VideoNameConversion.new;
 mapOfVideoFolderAndFiles = videoFileScannerObj.getMapOfVideoFolderAndFiles( @mainDirectory );
@@ -54,3 +56,4 @@ def renameAllVideofiles ( path , mapOfFileNames )
 end
 
 renameAllVideofiles( @mainDirectory , @mapOfOldNewFileNames )
+
