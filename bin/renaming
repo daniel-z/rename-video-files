@@ -5,16 +5,29 @@
 require "VideoFileScanner"
 require "VideoNameConversion"
 require 'fileutils'
+require 'logger'
+
+@logger = Logger.new(STDOUT);
+@logger.level = Logger::INFO;
+
+def info ( message )
+    if( ! message['content'] )
+      return
+    end
+    @logger.info message['content']
+end
 
 @mainDirectory = ( ARGV[0] || "." ) + '/' ;
 videoFileScannerObj    = VideoFileScanner.new;
 videoNameConversionObj = VideoNameConversion.new;
 mapOfVideoFolderAndFiles = videoFileScannerObj.getMapOfVideoFolderAndFiles( @mainDirectory );
+@fileCounter = 0;
+
+info({ 'content' => "renaming video files in #{@mainDirectory} ..."});
 
 #get the new file names for every folder
 @mapOfOldNewFileNames = [];
 videoIndexStart = 1;
-
 mapOfVideoFolderAndFiles.each do |folder|
 
     folderName    = folder['folderName'].to_s;
@@ -45,15 +58,34 @@ def renameAllVideofiles ( path , mapOfFileNames )
     end
     mapOfFileNames.each do |folderData|
         basePath = path + folderData['folderName'] + '/';
+
+        info({ 'content' => "scaning folder: #{basePath}"});
+
         folderData['actuaNames'].each_with_index do |actualName, index|
             oldName = basePath + actualName;
             newName = path + folderData['newNames'][index];
+
+            info({ 'content' => "renaming file: #{actualName} to #{folderData['newNames'][index]}"});
+
             if ( actualName === newName )
                 next
             end
             renameFile( oldName , newName );
+            @fileCounter+=1
         end
     end
 end
 
-renameAllVideofiles( @mainDirectory , @mapOfOldNewFileNames )
+def logger ( message )
+    if( ! message.priority || ! message.content )
+      return
+    end
+    @logger.info( message.content )
+end
+
+renameAllVideofiles( @mainDirectory , @mapOfOldNewFileNames );
+info({ 'content' => "all video files renamed and moved to parent directory"});
+info({ 'content' => "------------------------------------------------------"});
+info({ 'content' => "stats: #{@fileCounter} files renamed."});
+info({ 'content' => "------------------------------------------------------"});
+info({ 'content' => "renaming finished successfully!, enjoy :)"});
