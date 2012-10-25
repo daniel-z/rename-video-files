@@ -46,14 +46,14 @@ def renameAllVideofiles ( path , mapOfFileNames )
     mapOfFileNames.each do |folderData|
         basePath = path + folderData['folderName'] + '/';
         folderData['actuaNames'].each_with_index do |actualName, index|
-            newName = folderData['newNames'][index];
+            oldName = basePath + actualName;
+            newName = path + folderData['newNames'][index];
             if ( actualName === newName )
                 next
             end
-            renameFile( basePath + actualName , basePath + newName );
+            renameFile( oldName , newName );
         end
     end
 end
 
 renameAllVideofiles( @mainDirectory , @mapOfOldNewFileNames )
-
